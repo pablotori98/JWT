@@ -46,6 +46,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			signup: async(name, surname, email, password) =>{
+				const store = getstore();
+				const resp = await fetch('https://3001-pablotori98-reactflaskh-ul85rg9g3kz.ws-eu79.gitpod.io/api/signup',{
+					method: "POST",
+					headers: {"Content-Type":"application/json"},
+					body: JSON.stringify({
+						name: name,
+						surname: surname,
+						email: email,
+						password: password
+					}),
+				});
+				if(!resp.ok) throw Error("Problema en el signup")
+				if(resp.status === 401){
+					throw "Credenciales no validas"
+				}
+				else if(resp.status ===402){
+					throw "Formato usuario o contraseña no valido"
+				}
+				if(resp.ok){
+					Navigate("/")
+				}
 			}
 		}
 	};

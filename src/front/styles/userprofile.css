@@ -1,0 +1,14 @@
+.backgroundprofile{
+    height: 93vh;
+    background: linear-gradient(323deg, rgba(180,114,198,1) 0%, rgba(144,79,224,1) 38%, rgba(255,55,0,1) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardprofile{
+    background-color: white;
+    height: 80vh;
+    width: 80vw;
+    border-radius: 15px;
+}
