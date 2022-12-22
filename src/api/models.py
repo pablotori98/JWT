@@ -4,6 +4,7 @@ db = SQLAlchemy()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    username= db.Column(db.String(120))
     name= db.Column(db.String(120), unique=False)
     surname= db.Column(db.String(120), unique=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -17,5 +18,8 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
+            "username": self.username,
+            "name": self.name,
+            "surname": self.surname
             # do not serialize the password, its a security breach
         }

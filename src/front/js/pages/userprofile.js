@@ -12,7 +12,7 @@ export const UserProfile = () => {
         redirect: 'follow'
       };
       useEffect(()=>{
-      fetch(`https://3001-pablotori98-reactflaskh-adcy3g0pp92.ws-eu80.gitpod.io/api/user/pablotori98`, requestOptions)
+      fetch(`https://3001-pablotori98-jwt-tmi30mzudjg.ws-eu80.gitpod.io/api/pablotori98`, requestOptions)
         .then(response => response.json())
         .then(result => setResult(result))
         .catch(error => console.log('error', error));
@@ -26,7 +26,7 @@ export const UserProfile = () => {
                     <img className="card-img-top" src="..." alt="Card image cap"/>
                     <div className="card-body">
                         <h5 className="card-title">{console.log("este es el parametro"+params)}</h5>
-                        <p className="card-text">Tu nombre de usuario es {result.username}</p>
+                        <p className="card-text">Tu nombre de usuario es <strong>{result.username}</strong></p>
                         <a href="#" className="btn btn-primary">Go somewhere</a>
                     </div>
                     </div>

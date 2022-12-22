@@ -37,7 +37,7 @@ def get_login():
     if user == None:
         return jsonify({'msg': 'Contraseña o email incorrecto'})
     access_token = create_access_token(identity=email)
-    response = {"msg": "Credenciales correctas", "token": access_token}
+    response = {"msg": "Credenciales correctas", "token": access_token, "username": user.username}
     return jsonify(response)
 
 @api.route('signup', methods=['POST'])
@@ -57,3 +57,9 @@ def get_signup():
     response_signup= {'msg': 'Usuario creado correctamente' }#user_signup.serialize() for user in user_signup}
 
     return jsonify(response_signup)
+
+
+@api.route('/<string:username>', methods=['GET'])
+def get_user_username(username):
+   user = db.session.query(User).filter(User.username == username).first()    
+   return jsonify(user.serialize())
