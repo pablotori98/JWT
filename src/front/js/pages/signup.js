@@ -5,7 +5,7 @@ import "../../styles/signup.css"
 
 export const Signup = () =>{
     const navigate = useNavigate()
-    const [userName, setUsername] = useState ('')
+    const [username, setUsername] = useState ('')
     const [name, setName] = useState('')
     const [surname, setSurname] = useState('')
     const [email, setEmail] =useState('')
@@ -17,7 +17,7 @@ export const Signup = () =>{
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
-    "username": userName,
+    "username": username,
     "name": name,
     "surname": surname,
     "email": email,

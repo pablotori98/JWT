@@ -30,7 +30,7 @@ export const Navbar = () => {
 	const NavbarWithToken = () =>{
 		const logout = () => {
 			localStorage.removeItem("token"),
-			window.location.reload(false);
+			navigate("/")
 
 		}
 		return(

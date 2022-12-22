@@ -45,6 +45,7 @@ def get_signup():
     data = request.data
     data = json.loads(data)
     user_signup = User(
+        username= data['username'],
         name=data['name'],
         surname=data['surname'],
         email= data['email'],
@@ -60,6 +61,8 @@ def get_signup():
 
 
 @api.route('/<string:username>', methods=['GET'])
+# @jwt_required()
 def get_user_username(username):
-   user = db.session.query(User).filter(User.username == username).first()    
-   return jsonify(user.serialize())
+    user = db.session.query(User).filter(User.username == username).first()    
+
+    return jsonify(user.serialize())
