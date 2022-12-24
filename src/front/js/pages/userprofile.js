@@ -6,12 +6,15 @@ import "../../styles/index.css"
 
 export const UserProfile = () => {
     const [result, setResult] = useState({})
+    const token = localStorage.getItem("token")
     const params = useParams()
     const username = params.username
     const imgPerfil= "https://cdn-icons-png.flaticon.com/512/149/149071.png"
     var requestOptions = {
         method: 'GET',
-        redirect: 'follow'
+        headers: {'Authorization' : `Bearer ${token}`},
+        redirect: 'follow',
+
       };
       useEffect(()=>{
       fetch(`https://3001-pablotori98-jwt-4m3598jmdia.ws-eu80.gitpod.io/api/${username}`, requestOptions)
@@ -33,7 +36,6 @@ export const UserProfile = () => {
                         <p className="card-text text-center">Dirección de correo: <strong>{result.email}</strong></p>
                         <p className="card-text">Nombre: <strong>{result.name}</strong></p>
                         <p className="card-text">Apelido: <strong>{result.surname}</strong></p>
-
                         <a href="#" className="btn btn-primary">Añadir datos</a>
                     </div>
                     </div>
